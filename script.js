@@ -1,6 +1,6 @@
 // Write your JavaScript code here!
 
-const { myFetch } = require("./scriptHelper");
+//const { myFetch } = require("./scriptHelper");
 
 //import formSubmission from './scriptHelper.js';
 // import { formSubmission } from './scriptHelper.js';
@@ -8,7 +8,6 @@ const { myFetch } = require("./scriptHelper");
 //import _ from 'lodash';
 //import { formSubmission } from './scriptHelper.js';
 //const formSubmission = require('formSubmission');
-
 
 window.addEventListener("load", function() {
     const form = document.querySelector("form");
@@ -27,6 +26,7 @@ window.addEventListener("load", function() {
    let listedPlanets;
    // Set listedPlanetsResponse equal to the value returned by calling myFetch()
    let listedPlanetsResponse = myFetch();
+   //console.log(listedPlanetsResponse);
    listedPlanetsResponse.then(function (result) {
        listedPlanets = result;
        console.log(listedPlanets);
@@ -34,13 +34,23 @@ window.addEventListener("load", function() {
        console.log(listedPlanets);
        // Below this comment call the appropriate helper functions to pick a planet fom the list of planets and add that information to your destination.
 
+       //let random = pickPlanet(listedPlanets);
        let planet = pickPlanet(listedPlanets);
+       //console.log(planet);
        let name = planet.name;
        let diameter = planet.diameter;
        let star = planet.star;
        let distance = planet.distance;
        let imageUrl = planet.image;
        let moons = planet.moons;
+       //console.log(name,diameter,star);
+
+    //    let name = listedPlanets[random].name;
+    //    let diameter = listedPlanets[random].diameter;
+    //    let star = listedPlanets[random].star;
+    //    let distance = listedPlanets[random].distance;
+    //    let imageUrl = listedPlanets[random].image;
+    //    let moons = listedPlanets[random].moons;
        addDestinationInfo(document, name, diameter, star, distance, moons, imageUrl);
    })
   

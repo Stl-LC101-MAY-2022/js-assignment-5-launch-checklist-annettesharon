@@ -17,14 +17,22 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
                 const missionTarget = document.getElementById("missionTarget");
                 missionTarget.innerHTML = 
                 `<h2>Mission Destination</h2>
+                // <ol>
+                //    <li>Name: {json[Number(pickPlanet(planetsReturned))].name}</li>
+                //    <li>Diameter: ${json[Number(pickPlanet(planetsReturned))].diameter}</li>
+                //    <li>Star: ${json[Number(pickPlanet(planetsReturned))].star}</li>
+                //    <li>Distance from Earth: ${json[Number(pickPlanet(planetsReturned))].distance}</li>
+                //    <li>Number of Moons: ${json[Number(pickPlanet(planetsReturned))].moons}</li>
+                // </ol>
                 <ol>
-                   <li>Name: ${json[Number(pickPlanet(planetsReturned))].name}</li>
-                   <li>Diameter: ${json[Number(pickPlanet(planetsReturned))].diameter}</li>
-                   <li>Star: ${json[Number(pickPlanet(planetsReturned))].star}</li>
-                   <li>Distance from Earth: ${json[Number(pickPlanet(planetsReturned))].distance}</li>
-                   <li>Number of Moons: ${json[Number(pickPlanet(planetsReturned))].moons}</li>
-                </ol>
-                <img src="${json[Number(pickPlanet(planetsReturned))].image}">`
+                <li>Name: ${name}</li>
+                <li>Diameter: ${diameter}</li>
+                <li>Star: ${star}</li>
+                <li>Distance from Earth: ${distance}</li>
+                <li>Number of Moons: ${moons}</li>
+               </ol>
+                <img src="${imageUrl}">`
+                // console.log(name);
 }
 
 function validateInput(testInput) {
@@ -86,17 +94,35 @@ function updateShuttle(e, pilotName, copilotName, fuelLevel, cargoMass) {
 
 async function myFetch() {
     let planetsReturned;
-
+    //planetsReturned = await fetch().then(function(response){
     planetsReturned = await fetch("https://handlers.education.launchcode.org/static/planets.json").then(function(response) {
-        return response.json();
+    //console.log(planetsReturned);  
+
+    return response.json();
            
 });
+    
      return planetsReturned;
+//});
 }
+
+// async function myFetch() {
+//     let planetsReturned;
+
+//     planetsReturned = await fetch("https://handlers.education.launchcode.org/static/planets.json").then( function(response) {
+//      // response.json().then(function(result){
+//         return response.json();
+//       })
+//         //});
+//  console.log(planetsReturned);
+//     return planetsReturned;
+// }
+
+
 
 function pickPlanet(planets) {
     let index = Math.floor(Math.random() * planets.length);
-    if(index <= 0 || index >= planets.length){
+    if(index < 0 || index >= planets.length){
         return false;
     }
     else {
