@@ -91,7 +91,7 @@ async function myFetch() {
         // return response.json();
            
 });
-     return response.json();
+     return planetsReturned.json();
 }
 
 function pickPlanet(planets) {
