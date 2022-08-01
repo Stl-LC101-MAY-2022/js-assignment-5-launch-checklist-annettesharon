@@ -88,9 +88,11 @@ async function myFetch() {
     let planetsReturned;
 
     planetsReturned = await fetch("https://handlers.education.launchcode.org/static/planets.json").then( function(response) {
+        response.json().then(function (json) {
+            pickPlanet(planetsReturned);
 });
 
-    return planetsReturned;
+    return pickPlanet(planetsReturned);;
 }
 
 function pickPlanet(planets) {
