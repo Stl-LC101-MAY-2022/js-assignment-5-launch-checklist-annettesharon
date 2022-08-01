@@ -87,10 +87,10 @@ function updateShuttle(e, pilotName, copilotName, fuelLevel, cargoMass) {
 async function myFetch() {
     let planetsReturned;
 
-    planetsReturned = await fetch("https://handlers.education.launchcode.org/static/planets.json").then( function(response) {
+    planetsReturned = await fetch("https://handlers.education.launchcode.org/static/planets.json").then(function(response) {
         response.json().then(function (json) {
             pickPlanet(planetsReturned);
-});
+}));
 
     return pickPlanet(planetsReturned);;
 }
