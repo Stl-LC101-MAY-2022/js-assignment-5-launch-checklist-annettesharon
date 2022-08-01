@@ -93,7 +93,8 @@ async function myFetch() {
     });
 
     return pickPlanet(planetsReturned);;
-})
+});
+}
 
 function pickPlanet(planets) {
     let index = Math.floor(Math.random() * planets.length);
